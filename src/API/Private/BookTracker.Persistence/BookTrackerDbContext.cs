@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookTracker.Persistence;
 
-public class BookTrackerDbContext : DbContext
+public class BookTrackerDbContext : DbContext, IBookTrackerDbContext
 {
     public BookTrackerDbContext(DbContextOptions<BookTrackerDbContext> options) : base(options)
     {
