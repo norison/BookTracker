@@ -1,6 +1,6 @@
-﻿using BookTracker.BusinessLogic.Enums;
+﻿using BookTracker.BusinessLogic.Exceptions.User;
+using BookTracker.BusinessLogic.Services.Password;
 using BookTracker.Persistence;
-using BookTracker.Persistence.Entities;
 using Mediator;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,13 +9,28 @@ namespace BookTracker.BusinessLogic.Features.Commands.AddUser;
 public class AddUserCommandHandler : ICommandHandler<AddUserCommand>
 {
     private readonly IBookTrackerDbContext _context;
+    private readonly IPasswordService _passwordService;
 
-    public AddUserCommandHandler(IBookTrackerDbContext context)
+    public AddUserCommandHandler(IBookTrackerDbContext context, IPasswordService passwordService)
     {
         _context = context;
+        _passwordService = passwordService;
     }
 
     public async ValueTask<Unit> Handle(AddUserCommand command, CancellationToken cancellationToken)
+    {
+        await ValidateIfUserExistsAsync(command, cancellationToken);
+
+        var passwordHash = _passwordService.HashPassword(command.Password);
+        var newUser = command.ToUser(passwordHash);
+        
+        await _context.Users.AddAsync(newUser, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return Unit.Value;
+    }
+
+    private async Task ValidateIfUserExistsAsync(AddUserCommand command, CancellationToken cancellationToken)
     {
         var user = await _context.Users.FirstOrDefaultAsync(
             x => x.Login == command.Login || x.Email == command.Email,
@@ -23,22 +38,7 @@ public class AddUserCommandHandler : ICommandHandler<AddUserCommand>
 
         if (user is not null)
         {
-            throw new Exception("User not found");
+            throw new UserAlreadyExistsException();
         }
-        
-        var newUser = new User
-        {
-            Login = command.Login,
-            Email = command.Email,
-            PasswordHash = command.Password,
-            FirstName = command.FirstName,
-            LastName = command.LastName,
-            RoleId = (int)RoleType.User
-        };
-        
-        await _context.Users.AddAsync(newUser, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
-
-        return Unit.Value;
     }
 }
