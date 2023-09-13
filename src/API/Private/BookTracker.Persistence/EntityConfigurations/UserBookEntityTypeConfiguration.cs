@@ -9,7 +9,7 @@ public class UserBookEntityTypeConfiguration : IEntityTypeConfiguration<UserBook
     public void Configure(EntityTypeBuilder<UserBook> builder)
     {
         builder.ToTable("UserBook");
-        builder.HasKey(x => new { x.Id, x.UserId });
+        builder.HasKey(x => new { x.BookId, x.UserId });
         builder.Property(x => x.PageCount).IsRequired();
         builder.Property(x => x.DesiredFinishDate).HasColumnType("date").IsRequired();
         builder.Property(x => x.CreatedDateTime).IsRequired();
@@ -18,8 +18,8 @@ public class UserBookEntityTypeConfiguration : IEntityTypeConfiguration<UserBook
         builder
             .HasOne(x => x.Book)
             .WithMany(x => x.UserBooks)
-            .HasForeignKey(x => x.Id)
-            .OnDelete(DeleteBehavior.Cascade);
+            .HasForeignKey(x => x.BookId)
+            .OnDelete(DeleteBehavior.Restrict);
         
         builder
             .HasOne(x => x.User)

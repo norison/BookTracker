@@ -2,7 +2,7 @@
 
 public class Book
 {
-    public string Id { get; set; } = string.Empty;
+    public long Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string Format { get; set; } = string.Empty;
@@ -11,7 +11,7 @@ public class Book
     public int PublishedYear { get; set; }
     public int PageCount { get; set; }
 
-    public Guid PublisherId { get; set; }
+    public int PublisherId { get; set; }
     public Publisher? Publisher { get; set; }
     
     public int GenreId { get; set; }

@@ -13,8 +13,9 @@ public class MoodEntityTypeConfiguration : IEntityTypeConfiguration<Mood>
         builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
 
         builder.HasData(
-            new Mood { Id = 1, Name = "Sad" },
-            new Mood { Id = 2, Name = "Neutral" },
-            new Mood { Id = 3, Name = "Happy" });
+            new Mood { Id = 1, Name = "None" },
+            new Mood { Id = 2, Name = "Sad" },
+            new Mood { Id = 3, Name = "Neutral" },
+            new Mood { Id = 4, Name = "Happy" });
     }
 }

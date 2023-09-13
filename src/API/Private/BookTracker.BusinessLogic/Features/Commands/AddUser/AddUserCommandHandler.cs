@@ -28,7 +28,6 @@ public class AddUserCommandHandler : ICommandHandler<AddUserCommand>
         
         var newUser = new User
         {
-            Id = Guid.NewGuid(),
             Login = command.Login,
             Email = command.Email,
             PasswordHash = command.Password,
