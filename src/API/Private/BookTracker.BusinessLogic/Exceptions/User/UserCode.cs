@@ -2,5 +2,6 @@
 
 public enum UserCode
 {
-    UserAlreadyExists = 1
+    UserAlreadyExists = 1,
+    InvalidCredentials = 2
 }

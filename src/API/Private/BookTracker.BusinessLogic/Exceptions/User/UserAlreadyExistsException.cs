@@ -2,7 +2,7 @@
 
 namespace BookTracker.BusinessLogic.Exceptions.User;
 
-public class UserAlreadyExistsException : NotFoundException
+public class UserAlreadyExistsException : ValidationException
 {
     private const string ErrorMessage = "User already exists";
 

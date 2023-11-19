@@ -19,7 +19,7 @@ public class AddUserCommandHandlerTests : TestBase
         base.SetUp();
         
         _passwordService = Substitute.For<IPasswordService>();
-        _handler = new AddUserCommandHandler(DbContext, _passwordService);
+        _handler = new AddUserCommandHandler(DbContextFactory, _passwordService);
     }
     
     [Test]

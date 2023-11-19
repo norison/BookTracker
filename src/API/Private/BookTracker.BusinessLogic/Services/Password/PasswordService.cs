@@ -12,6 +12,6 @@ public class PasswordService : IPasswordService
 
     public bool VerifyPassword(string password, string passwordHash)
     {
-        return BCrypt.Net.BCrypt.Verify(passwordHash, passwordHash);
+        return BCrypt.Net.BCrypt.Verify(password, passwordHash);
     }
 }

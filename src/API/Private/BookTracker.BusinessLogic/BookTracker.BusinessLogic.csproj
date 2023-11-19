@@ -20,8 +20,6 @@
       <PackageReference Include="Riok.Mapperly" Version="3.1.0" />
     </ItemGroup>
 
-
-
     <ItemGroup>
       <Folder Include="Features\Queries\" />
     </ItemGroup>
