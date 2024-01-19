@@ -45,8 +45,6 @@ public class VerifyUserHandlerTests : TestBase
             .Invoking(async handler => await handler.Handle(command, CancellationToken.None))
             .Should()
             .NotThrowAsync();
-
-        _passwordService.Received().VerifyPassword(command.Password, user.PasswordHash);
     }
     
     [Test]

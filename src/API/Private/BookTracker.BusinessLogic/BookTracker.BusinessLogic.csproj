@@ -7,21 +7,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BookTracker.Persistence\BookTracker.Persistence.csproj" />
+        <ProjectReference Include="..\BookTracker.Persistence\BookTracker.Persistence.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
-      <PackageReference Include="Mediator.Abstractions" Version="2.1.5" />
-      <PackageReference Include="Mediator.SourceGenerator" Version="2.1.5">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Riok.Mapperly" Version="3.1.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Features\Queries\" />
+        <PackageReference Include="BCrypt.Net-Core" Version="1.6.0"/>
+        <PackageReference Include="Mediator.Abstractions" Version="2.1.5"/>
+        <PackageReference Include="Mediator.SourceGenerator" Version="2.1.5">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Riok.Mapperly" Version="3.1.0"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
     </ItemGroup>
 
 </Project>

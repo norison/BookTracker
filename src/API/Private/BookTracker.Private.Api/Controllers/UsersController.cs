@@ -31,6 +31,7 @@ public class UsersController : ControllerBase
         };
         
         await _sender.Send(command, cancellationToken);
+        
         return NoContent();
     }
     
@@ -44,6 +45,7 @@ public class UsersController : ControllerBase
         };
         
         await _sender.Send(command, cancellationToken);
+        
         return NoContent();
     }
 }
