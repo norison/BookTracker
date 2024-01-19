@@ -12,6 +12,7 @@
 
     <ItemGroup>
         <PackageReference Include="BCrypt.Net-Core" Version="1.6.0"/>
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
         <PackageReference Include="Mediator.Abstractions" Version="2.1.5"/>
         <PackageReference Include="Mediator.SourceGenerator" Version="2.1.5">
             <PrivateAssets>all</PrivateAssets>
