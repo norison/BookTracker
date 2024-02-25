@@ -5,5 +5,5 @@ namespace BookTracker.Private.Api.Tests;
 [TestFixture]
 public abstract class TestBase
 {
-    protected Fixture Fixture { get; } = new Fixture();
+    protected Fixture Fixture { get; } = new();
 }

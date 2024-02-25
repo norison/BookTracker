@@ -1,8 +1,10 @@
-﻿using BookTracker.Persistence.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+using BookTracker.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookTracker.Persistence;
 
+[ExcludeFromCodeCoverage]
 public class BookTrackerDbContext : DbContext
 {
     public BookTrackerDbContext(DbContextOptions<BookTrackerDbContext> options) : base(options)

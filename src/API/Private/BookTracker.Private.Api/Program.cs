@@ -1,5 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 using BookTracker.BusinessLogic.Extensions;
 using BookTracker.Persistence.Extensions;
+using BookTracker.Private.Api.Extensions;
 using BookTracker.Private.Api.Middlewares.ErrorHandling;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,14 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.UseMiddleware<ErrorHandlingMiddleware>();
-app.MapControllers();
+app.MapEndpoints();
 
 app.Run();
+
+namespace BookTracker.Private.Api
+{
+    [ExcludeFromCodeCoverage]
+    internal partial class Program
+    {
+    }
+}
